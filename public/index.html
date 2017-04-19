@@ -16,9 +16,13 @@
 
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
 
+    <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
+
+    <link rel="stylesheet" href="/styles/font-awesome.css" type="text/css" />
 
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -44,7 +48,22 @@
         </form>
       </section>
       <section id="all-tweets">
-
+        <article class="tweets">
+          <header class="tweet-header">
+            <img src="/images/smiley.jpg">
+            <h2>Jack Smith</h2>
+            <span class="handler-name">@JackS</span>
+          </header>
+          <p class="tweet-message">This is a test message.This is a test message.This is a test message.This is a test message.This is a test message.</p>
+          <footer class="tweet-footer">
+            <span class="tweet-age">10 days ago</span>
+            <span class="tweet-actions">
+              <a href=""><i class="fa fa-flag" aria-hidden="true"></i></a>
+              <a href=""><i class="fa fa-retweet" aria-hidden="true"></i></a>
+              <a href=""><i class="fa fa-heart" aria-hidden="true"></i></a>
+            </span>
+          </footer>
+        </article>
       </section>
     </main>
 

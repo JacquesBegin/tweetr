@@ -1,8 +1,9 @@
 $(document).ready(function() {
 
-  $(this).on("keyup", function() {
-    var length = $(event.target).val().length;
-    var counter = $(event.target).parent().children(".counter");
+  $("section.new-tweet form textarea").on("keyup", function() {
+    console.log("hello");
+    var length = $(this).val().length;
+    var counter = $(this).parent().children(".counter");
     var maxTweetLength = 140;
     $(counter).text(maxTweetLength - length);
 
