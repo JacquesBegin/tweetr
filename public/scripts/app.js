@@ -18,6 +18,14 @@ $(document).ready(function() {
     var timeAgoInDays = (timeAgoInHours / 24);
 
 
+    var timeDifference = new Date(time - createdDate);
+    // console.log("YEAR", timeDifference.getFullYear() - 1970);
+    // console.log("DAYS", timeDifference.getTime() / (1000 * 60 * 60 * 24));
+
+
+
+
+
     if (timeAgoInSeconds < 60) {
       ageMessage = "less than a minute ago";
     } else if (timeAgoInSeconds < 120) {
@@ -101,7 +109,6 @@ $(document).ready(function() {
         format: "json"
       },
       success: function(data) {
-        console.log("1:", data);
         renderTweets(data);
       }
     })
@@ -116,11 +123,9 @@ $(document).ready(function() {
     if (userInput === "" || userInput === null) {
       $(".form-errors").html("<em>Enter text to submit</em>");
       return false;
-      // break;
     } else if (userInput.length > 140) {
       $(".form-errors").html("<em>Maximum tweet length exceeded</em>");
       return false;
-      // break;
     }
     return true;
   }
@@ -135,10 +140,13 @@ $(document).ready(function() {
           method: "POST",
           url: "/tweets",
           data: $("section.new-tweet textarea").serialize(),
-          success: function() {
-            loadTweets();
+          success: function(tweet) {
             $("section.new-tweet textarea").val("");
+            var newTweet = createTweetElement(tweet);
+            $("section#all-tweets").prepend(newTweet);
           }
+          // ,
+          // error: function(err)
         });
     }
   });
