@@ -1,14 +1,14 @@
-article.tweets {
+article.tweet {
   background-color: #fff;
   width: 100%;
   border-radius: .4em;
   border: 1px solid #ccc;
   position: relative;
-  margin: 2em 0 0 0;
+  margin: 0 0 .65em 0;
   opacity: 0.7;
 }
 
-article.tweets:hover {
+article.tweet:hover {
   opacity: 1;
 }
 
@@ -33,7 +33,7 @@ article.tweets:hover {
   margin: 0 0 0 .5em;
 }
 
-.tweet-header .handler-name {
+.tweet-header .handle-name {
   position: absolute;
   top: 1em;
   right: .65em;
@@ -60,7 +60,12 @@ article .tweet-footer .tweet-actions {
 }
 
 article .tweet-footer .tweet-actions i {
-  margin: 0 0 0 .3em;
+  margin: 0 0 0 .5em;
   color: #79C3B7;
+}
+
+.form-errors {
+  margin: 0 0 0 .5em;
+  color: red;
 }
 

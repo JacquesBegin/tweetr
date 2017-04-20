@@ -5,6 +5,7 @@ section.new-tweet {
   border: 1px solid #ccc;
   padding: .70em;
   position: relative;
+  margin: 0 0 .65em 0;
 }
 
 section.new-tweet h2 {
@@ -20,7 +21,7 @@ section.new-tweet textarea {
 section.new-tweet .counter {
   font-style: italic;
   font-size: 80%;
-  position: absolute;
-  bottom: 1.1em;
-  right: 1.5em;
+  float: right;
+  margin: .5em .5em 0 0;
+  /*margin: 0 0 0 21em;*/
 }

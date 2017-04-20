@@ -28,7 +28,7 @@ body {
 main {
   background-color: white;
   width: 450px;
-  height: 2000px;
+
   margin: 0 auto 0 auto;
-  padding: 140px 2em 140px 2em;
+  padding: 140px 2em 2em 2em;
  }

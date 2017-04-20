@@ -20,5 +20,30 @@ nav {
   float: left;
   font-size: 200%;
   line-height: 2.5;
+}
 
+#nav-bar ul {
+  list-style-type: none;
+  position: absolute;
+  top: -.45em;
+  right: 2.5em;
+
+}
+
+.compose-button {
+  background-color: #e8fdff;
+  color: #00a087;
+  border: 1px solid black;
+  border-radius: .25em;
+  font-size: 1.3em;
+  padding: .85em .4em;
+}
+
+.compose-button i {
+  margin: 0 .25em 0 0;
+}
+
+.compose-button:hover {
+  color: black;
+  background-color: white;
 }
