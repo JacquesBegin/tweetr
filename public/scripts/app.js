@@ -137,6 +137,7 @@ $(document).ready(function() {
           data: $("section.new-tweet textarea").serialize(),
           success: function() {
             loadTweets();
+            $("section.new-tweet textarea").val("");
           }
         });
     }
@@ -148,6 +149,7 @@ $(document).ready(function() {
       textarea.slideUp( "fast" );
     } else {
       textarea.slideDown( "fast" );
+      $("body").scrollTop(0);
       $("section.new-tweet textarea").select();;
     }
   })
