@@ -9,6 +9,7 @@ $(document).ready(function() {
 
     if (length <= maxTweetLength) {
       $(counter).css("color", "#244751");
+      $(".form-errors").text("");
     } else {
       $(counter).css("color", "red");
     }

@@ -1,0 +1,139 @@
+/*
+ * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * https://css-tricks.com/international-box-sizing-awareness-day/
+ * Do not modify these two selectors, please
+ */
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+/*
+ * Global layout stuff
+ */
+body {
+  margin: 0;
+  color: #244751;
+  background-color: #eee;
+  font-family: 'Roboto Condensed', sans-serif; }
+
+/*
+ * Additional CSS can be defined below or in other CSS files, as per instructions
+ */
+main {
+  background-color: white;
+  width: 450px;
+  margin: 0 auto 0 auto;
+  padding: 140px 2em 2em 2em; }
+
+nav#nav-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #00a087;
+  color: #e8fdff;
+  padding: 0 2em 0 2em;
+  z-index: 1000; }
+  nav#nav-bar .logo {
+    width: 80px;
+    height: 80px;
+    float: left; }
+  nav#nav-bar .header {
+    margin: 0 0 0 10px;
+    float: left;
+    font-size: 200%;
+    line-height: 2.5; }
+  nav#nav-bar ul {
+    list-style-type: none;
+    position: absolute;
+    top: -.45em;
+    right: 2.5em; }
+  nav#nav-bar .compose-button {
+    background-color: #e8fdff;
+    color: #00a087;
+    border: 1px solid black;
+    border-radius: .25em;
+    font-size: 1.3em;
+    padding: .85em .4em; }
+  nav#nav-bar .compose-button i {
+    margin: 0 .25em 0 0; }
+  nav#nav-bar .compose-button:hover {
+    color: black;
+    background-color: white; }
+
+section.new-tweet {
+  background-color: #eee;
+  width: 100%;
+  border-radius: .4em;
+  border: 1px solid #ccc;
+  padding: .70em;
+  position: relative;
+  margin: 0 0 .65em 0; }
+  section.new-tweet h2 {
+    margin: 0 0 1em 0;
+    border-bottom: 1px solid #313030; }
+  section.new-tweet textarea {
+    width: 100%;
+    padding: .25em; }
+  section.new-tweet .counter {
+    font-style: italic;
+    font-size: 80%;
+    float: right;
+    margin: .5em .5em 0 0; }
+  section.new-tweet .form-errors {
+    margin: 0 0 0 .5em;
+    color: red; }
+
+article.tweet {
+  background-color: #fff;
+  width: 100%;
+  border-radius: .4em;
+  border: 1px solid #ccc;
+  position: relative;
+  margin: 0 0 .65em 0;
+  opacity: 0.7; }
+  article.tweet:hover {
+    opacity: 1; }
+  article.tweet:hover i {
+    visibility: visible; }
+  article.tweet .tweet-header {
+    position: relative;
+    background-color: #eee;
+    margin: 0 0 1.5em 0;
+    padding: .65em;
+    width: 100%;
+    height: 4.9em; }
+  article.tweet .tweet-header img {
+    float: left;
+    width: 55px;
+    height: 55px;
+    border-radius: .4em; }
+  article.tweet .tweet-header h2 {
+    float: left;
+    margin: 0 0 0 .5em; }
+  article.tweet .tweet-header .handle-name {
+    position: absolute;
+    top: 1em;
+    right: .65em;
+    font-size: 85%; }
+  article.tweet .tweet-message {
+    margin: 0;
+    padding: .65em .85em .65em .85em; }
+  article.tweet .tweet-footer {
+    position: relative;
+    border-top: 1px solid #eee;
+    margin: 1.5em 0 0 0;
+    padding: .85em 0 .85em .70em;
+    font-size: 75%; }
+  article.tweet .tweet-footer .tweet-actions {
+    font-size: 125%;
+    position: absolute;
+    right: .65em;
+    visibility: hidden; }
+  article.tweet .tweet-footer .tweet-actions i {
+    margin: 0 0 0 .5em;
+    color: #79C3B7; }
+
+/*# sourceMappingURL=css-collection.css.map */

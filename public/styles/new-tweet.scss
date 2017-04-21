@@ -1,0 +1,31 @@
+section.new-tweet {
+  background-color: #eee;
+  width: 100%;
+  border-radius: .4em;
+  border: 1px solid #ccc;
+  padding: .70em;
+  position: relative;
+  margin: 0 0 .65em 0;
+
+  h2 {
+    margin: 0 0 1em 0;
+    border-bottom: 1px solid #313030;
+  }
+
+  textarea {
+    width: 100%;
+    padding: .25em;
+  }
+
+  .counter {
+    font-style: italic;
+    font-size: 80%;
+    float: right;
+    margin: .5em .5em 0 0;
+  }
+
+  .form-errors {
+    margin: 0 0 0 .5em;
+    color: red;
+  }
+}

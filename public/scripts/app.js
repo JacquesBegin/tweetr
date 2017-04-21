@@ -138,8 +138,9 @@ $(document).ready(function() {
           data: $("section.new-tweet textarea").serialize(),
           success: function(tweet) {
             $("section.new-tweet textarea").val("");
-            var newTweet = createTweetElement(tweet);
-            $("section#all-tweets").prepend(newTweet);
+            // var newTweet = createTweetElement(tweet);
+            // $("section#all-tweets").prepend(newTweet);
+            loadTweets();
           }
           // ,
           // error: function(err)

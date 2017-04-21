@@ -1,4 +1,4 @@
-nav {
+nav#nav-bar {
   position: fixed;
   top: 0;
   width: 100%;
@@ -6,44 +6,32 @@ nav {
   background-color: #00a087;
   color: #e8fdff;
   padding: 0 2em 0 2em;
-  z-index: 1000;
-}
+  z-index: 1000; }
+  nav#nav-bar .logo {
+    width: 80px;
+    height: 80px;
+    float: left; }
+  nav#nav-bar .header {
+    margin: 0 0 0 10px;
+    float: left;
+    font-size: 200%;
+    line-height: 2.5; }
+  nav#nav-bar ul {
+    list-style-type: none;
+    position: absolute;
+    top: -.45em;
+    right: 2.5em; }
+  nav#nav-bar .compose-button {
+    background-color: #e8fdff;
+    color: #00a087;
+    border: 1px solid black;
+    border-radius: .25em;
+    font-size: 1.3em;
+    padding: .85em .4em; }
+  nav#nav-bar .compose-button i {
+    margin: 0 .25em 0 0; }
+  nav#nav-bar .compose-button:hover {
+    color: black;
+    background-color: white; }
 
-#nav-bar .logo {
-  width: 80px;
-  height: 80px;
-  float: left;
-}
-
-#nav-bar .header {
-  margin: 0 0 0 10px;
-  float: left;
-  font-size: 200%;
-  line-height: 2.5;
-}
-
-#nav-bar ul {
-  list-style-type: none;
-  position: absolute;
-  top: -.45em;
-  right: 2.5em;
-
-}
-
-.compose-button {
-  background-color: #e8fdff;
-  color: #00a087;
-  border: 1px solid black;
-  border-radius: .25em;
-  font-size: 1.3em;
-  padding: .85em .4em;
-}
-
-.compose-button i {
-  margin: 0 .25em 0 0;
-}
-
-.compose-button:hover {
-  color: black;
-  background-color: white;
-}
+/*# sourceMappingURL=nav.css.map */
