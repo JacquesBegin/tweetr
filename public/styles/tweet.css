@@ -12,6 +12,10 @@ article.tweet:hover {
   opacity: 1;
 }
 
+article.tweet:hover i {
+  visibility: visible;
+}
+
 .tweet-header {
   position: relative;
   background-color: #eee;
@@ -57,6 +61,7 @@ article .tweet-footer .tweet-actions {
   font-size: 125%;
   position: absolute;
   right: .65em;
+  visibility: hidden;
 }
 
 article .tweet-footer .tweet-actions i {

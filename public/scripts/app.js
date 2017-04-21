@@ -22,10 +22,6 @@ $(document).ready(function() {
     // console.log("YEAR", timeDifference.getFullYear() - 1970);
     // console.log("DAYS", timeDifference.getTime() / (1000 * 60 * 60 * 24));
 
-
-
-
-
     if (timeAgoInSeconds < 60) {
       ageMessage = "less than a minute ago";
     } else if (timeAgoInSeconds < 120) {
