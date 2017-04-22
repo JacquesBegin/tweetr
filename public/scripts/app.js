@@ -40,7 +40,9 @@ $(document).ready(function() {
   // setting values from parameter values
   function createTweetElement(tweetData) {
 
-    var $tweet = $("<article>").addClass("tweet");
+    console.log("tweetData: ", tweetData);
+
+    var $tweet = $("<article>").addClass("tweet").attr("data-tweetId", `${tweetData._id}`);
 
     // the tweet header and content that needs to display in the header
     var $header = $("<header>").addClass("tweet-header");
@@ -85,7 +87,7 @@ $(document).ready(function() {
 
   // get all tweets and send to the frontend
   function renderTweets(tweets) {
-    console.log("2:", typeof tweets);
+    // console.log("2:", typeof tweets);
     var allTweets = [];
     for (var i of tweets) {
       allTweets.push(createTweetElement(i));
@@ -106,6 +108,11 @@ $(document).ready(function() {
       },
       success: function(data) {
         renderTweets(data);
+        $("i.fa.fa-heart").on("click", function(event) {
+          event.preventDefault();
+          var likeButton = $("i.fa.fa-heart");
+          // if(likeButton)
+        });
       }
     })
   }
@@ -136,8 +143,9 @@ $(document).ready(function() {
           method: "POST",
           url: "/tweets",
           data: $("section.new-tweet textarea").serialize(),
-          success: function(tweet) {
+          success: function() {
             $("section.new-tweet textarea").val("");
+            $("section.new-tweet .counter").text("140");
             // var newTweet = createTweetElement(tweet);
             // $("section#all-tweets").prepend(newTweet);
             loadTweets();
@@ -148,16 +156,19 @@ $(document).ready(function() {
     }
   });
 
-  $("nav .compose-button").on("click", function(event) {
+  $("nav .compose-button").click(function(event) {
     var textarea = $("section.new-tweet");
     if (textarea.is(":visible")) {
       textarea.slideUp( "fast" );
     } else {
       textarea.slideDown( "fast" );
       $("body").scrollTop(0);
-      $("section.new-tweet textarea").select();;
+      $("section.new-tweet textarea").select();
     }
-  })
+  });
+
+
 
 });
+
 

@@ -1,4 +1,4 @@
-"use strict";
+ "use strict";
 
 // Basic express setup:
 
@@ -11,6 +11,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 const db = require("./lib/mongo-db-connection.js");
+
+// const mUsers = require("./lib/util/migrate-users.js")(db);
+// console.log("here");
+// mUsers.migrate();
 
 // The `data-helpers` module provides an interface to the database of tweets.
 // This simple interface layer has a big benefit: we could switch out the

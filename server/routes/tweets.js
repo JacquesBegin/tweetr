@@ -5,6 +5,9 @@ const userHelper    = require("../lib/util/user-helper")
 const express       = require('express');
 const tweetsRoutes  = express.Router();
 
+const db = require("../lib/mongo-db-connection.js");
+const mUsers = require("../lib/util/migrate-users.js")(db);
+
 module.exports = function(DataHelpers) {
 
   tweetsRoutes.get("/", function(req, res) {
@@ -29,7 +32,7 @@ module.exports = function(DataHelpers) {
       content: {
         text: req.body.text
       },
-      created_at: Date.now()
+      created_at: new Date().getTime()
     };
 
     DataHelpers.saveTweet(tweet, (err) => {
