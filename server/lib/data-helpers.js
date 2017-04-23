@@ -30,11 +30,13 @@ module.exports = function makeDataHelpers(db) {
         }
         var database = db.getDb();
         database.collection("tweets").find().toArray((err, tweets) => {
+          db.closeDb();
           callback(null, tweets);
         });
       });
     },
 
+    // Get all users in `db`
     getUsers: function(callback) {
       db.connectToServer(err => {
         if (err) {
@@ -42,16 +44,10 @@ module.exports = function makeDataHelpers(db) {
         }
         var database = db.getDb();
         database.collection("users").find().toArray((err, users) => {
-        callback(null, users);
+          db.closeDb();
+          callback(null, users);
         });
       });
     }
   }
 }
-
-        // database.collection("tweets").find().toArray((err, tweets) => {
-        // const sortNewestFirst = (a, b) => a.created_at - b.created_at;
-        // callback(null, tweets.sort(sortNewestFirst));
-        // });
-        // db.closeDb();
-

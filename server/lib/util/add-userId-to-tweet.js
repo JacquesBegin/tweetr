@@ -1,3 +1,8 @@
+// this module is for manipulating the database to add new
+// fields to existing collections or replace documents with
+// new data
+
+
 const randomize = require("randomatic");
 
 module.exports = function addUserId(db) {

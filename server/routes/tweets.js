@@ -6,19 +6,29 @@ const express       = require('express');
 const tweetsRoutes  = express.Router();
 const randomize = require("randomatic");
 
-const db = require("../lib/mongo-db-connection.js");
-const mUsers = require("../lib/util/migrate-users.js")(db);
-const addU = require("../lib/util/add-userId-to-tweet.js")(db);
+
+// // these require's are necessary to perform database collection
+// // migration and document field add/update
+// const db = require("../lib/mongo-db-connection.js");
+// const mUsers = require("../lib/util/migrate-users.js")(db);
+// const addU = require("../lib/util/add-userId-to-tweet.js")(db);
+
+    // // Use these function calls to migrate data between collections
+    // // and add/update fields to a document
+    // mUsers.migrate();
+    // addU.addUID();
 
 
 module.exports = function(DataHelpers) {
 
   tweetsRoutes.get("/", function(req, res) {
-    // mUsers.migrate();
-    // addU.addUID();
     let allTweets = [];
     let allUsers = [];
     let tweetArray = [];
+
+    // Two calls to the database to get tweets and users.
+    // Compile data from tweets and users to create a new object
+    // for each tweet that the frontend can use to display tweet
     DataHelpers.getTweets((err, tweets) => {
       if (err) {
         res.status(500).json({ error: err.message });
@@ -41,6 +51,8 @@ module.exports = function(DataHelpers) {
                 }
               }
             }
+            const sortNewestFirst = (a, b) => a.created_at - b.created_at;
+            tweetArray.sort(sortNewestFirst);
             res.json(tweetArray);
           }
         });
@@ -63,6 +75,13 @@ module.exports = function(DataHelpers) {
       created_at: new Date().getTime()
     };
 
+    // Currently saving a tweet will also save the user to the
+    // users collection. This is possible because everytime a
+    // tweet is posted, a new user is created automatically.
+    // Future implementation will remove user creation in this
+    // action because user will have to be logged in to create
+    // tweets. At that time, userId will be saved to the tweet
+    // from the session information
     DataHelpers.saveTweet(tweet, user, (err) => {
       if (err) {
         res.status(500).json({ error: err.message });

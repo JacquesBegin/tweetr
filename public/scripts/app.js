@@ -16,12 +16,11 @@ $(document).ready(function() {
     var timeAgoInMinutes = (timeAgoInSeconds / 60);
     var timeAgoInHours = (timeAgoInMinutes / 60);
     var timeAgoInDays = (timeAgoInHours / 24);
-
-
     var timeDifference = new Date(time - createdDate);
-    // console.log("YEAR", timeDifference.getFullYear() - 1970);
-    // console.log("DAYS", timeDifference.getTime() / (1000 * 60 * 60 * 24));
 
+    // calculate length of time since tweet was created and
+    // append a message that is appropriate for a particular
+    // duration
     if (timeAgoInSeconds < 60) {
       ageMessage = "less than a minute ago";
     } else if (timeAgoInSeconds < 120) {
@@ -40,8 +39,7 @@ $(document).ready(function() {
   // setting values from parameter values
   function createTweetElement(tweetData) {
 
-    console.log("tweetData: ", tweetData);
-
+    // the article that will hold all tweet elements
     var $tweet = $("<article>").addClass("tweet").attr("data-tweetId", `${tweetData._id}`);
 
     // the tweet header and content that needs to display in the header
@@ -87,18 +85,15 @@ $(document).ready(function() {
 
   // get all tweets and send to the frontend
   function renderTweets(tweets) {
-    // console.log("2:", typeof tweets);
     var allTweets = [];
     for (var i of tweets) {
       allTweets.push(createTweetElement(i));
     }
     allTweets.reverse();
-
     $("section#all-tweets").html(allTweets);
   }
 
-  // get all tweets from database and pass to renderTweets function
-  // to print to screen
+  // get all tweets from database and pass to renderTweets
   function loadTweets() {
     $.ajax({
       method: "GET",
@@ -108,17 +103,24 @@ $(document).ready(function() {
       },
       success: function(data) {
         renderTweets(data);
-        $("i.fa.fa-heart").on("click", function(event) {
-          event.preventDefault();
-          var likeButton = $("i.fa.fa-heart");
-          // if(likeButton)
-        });
+
+        // // Event listener for when like button is clicked.
+        // // Need to implement icon color change and send
+        // // data to database to track user likes on an
+        // // individual tweet
+        // $("i.fa.fa-heart").on("click", function(event) {
+        //   event.preventDefault();
+        //   var likeButton = $("i.fa.fa-heart");
+        // });
       }
     })
   }
 
+  // load tweets to the frontend when the document is ready
   loadTweets();
 
+  // validation to ensure that the form has data and that
+  // the length of the data does not exceed 140 characters
   function validateTweetFormInput() {
     var userInput = $("section.new-tweet textarea").val();
     var formErrors = $(".form-errors");
@@ -139,23 +141,20 @@ $(document).ready(function() {
     event.preventDefault();
     if (!validateTweetFormInput()) {
     } else {
-        $.ajax({
-          method: "POST",
-          url: "/tweets",
-          data: $("section.new-tweet textarea").serialize(),
-          success: function() {
-            $("section.new-tweet textarea").val("");
-            $("section.new-tweet .counter").text("140");
-            // var newTweet = createTweetElement(tweet);
-            // $("section#all-tweets").prepend(newTweet);
-            loadTweets();
-          }
-          // ,
-          // error: function(err)
-        });
+      $.ajax({
+        method: "POST",
+        url: "/tweets",
+        data: $("section.new-tweet textarea").serialize(),
+        success: function() {
+          $("section.new-tweet textarea").val("");
+          $("section.new-tweet .counter").text("140");
+          loadTweets();
+        }
+      });
     }
   });
 
+  // slider functionality for the compose post form
   $("nav .compose-button").click(function(event) {
     var textarea = $("section.new-tweet");
     if (textarea.is(":visible")) {
@@ -166,9 +165,5 @@ $(document).ready(function() {
       $("section.new-tweet textarea").select();
     }
   });
-
-
-
 });
-
 
