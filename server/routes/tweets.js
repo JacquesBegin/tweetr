@@ -4,6 +4,7 @@ const userHelper    = require("../lib/util/user-helper")
 
 const express       = require('express');
 const tweetsRoutes  = express.Router();
+const randomize = require("randomatic");
 
 const db = require("../lib/mongo-db-connection.js");
 const mUsers = require("../lib/util/migrate-users.js")(db);
@@ -22,7 +23,6 @@ module.exports = function(DataHelpers) {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
-        // console.log("yoyoyoyoyoyoy", tweets);
         for (var i of tweets) {
         allTweets.push(i);
         }
@@ -30,22 +30,17 @@ module.exports = function(DataHelpers) {
           if (err) {
             res.status(500).json({ error: err.message });
           } else {
-            // console.log("yoyoyoyoyoyoy", users);
             for (var j of users) {
             allUsers.push(j);
             }
-            console.log("WHATATATATTAATT");
             for (var aTweet of allTweets) {
-                // console.log("let me have it!!!!!!!", aTweet);
               for (var aUser of allUsers) {
-                // console.log("let me have it!!!!!!!", aUser);
-                if (JSON.stringify(aTweet.userId) === JSON.stringify(aUser._id)) {
+                if (JSON.stringify(aTweet.userId) === JSON.stringify(aUser.userId)) {
                   let compiledTweetInfo = {_id: aTweet._id, content: aTweet.content, created_at: aTweet.created_at, name: aUser.name, handle: aUser.handle, avatars: aUser.avatars};
                   tweetArray.push(compiledTweetInfo);
                 }
               }
             }
-            console.log(tweetArray);
             res.json(tweetArray);
           }
         });
@@ -54,29 +49,28 @@ module.exports = function(DataHelpers) {
   });
 
 
-  // tweetsRoutes.post("/", function(req, res) {
-  //   if (!req.body.text) {
-  //     res.status(400).json({ error: 'invalid request: no data in POST body'});
-  //     return;
-  //   }
+  tweetsRoutes.post("/", function(req, res) {
+    if (!req.body.text) {
+      res.status(400).json({ error: 'invalid request: no data in POST body'});
+      return;
+    }
 
-  //   const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
-  //   const tweet = {
-  //     user: user,
-  //     content: {
-  //       text: req.body.text
-  //     },
-  //     created_at: new Date().getTime()
-  //   };
+    const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
+    user["userId"] = randomize("Aa0", 10);
+    const tweet = {
+      userId: user["userId"],
+      content: req.body.text,
+      created_at: new Date().getTime()
+    };
 
-  //   DataHelpers.saveTweet(tweet, (err) => {
-  //     if (err) {
-  //       res.status(500).json({ error: err.message });
-  //     } else {
-  //       res.status(201).send();
-  //     }
-  //   });
-  // });
+    DataHelpers.saveTweet(tweet, user, (err) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.status(201).send();
+      }
+    });
+  });
 
   return tweetsRoutes;
 

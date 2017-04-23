@@ -1,3 +1,5 @@
+const randomize = require("randomatic");
+
 module.exports = function addUserId(db) {
   return {
 
@@ -8,11 +10,16 @@ module.exports = function addUserId(db) {
         }
         var database = db.getDb();
         database.collection("tweets").find().forEach(function(aTweet) {
-          let tweetUser = aTweet.user.name;
+          let tweetUser = JSON.stringify(aTweet.userId);
           database.collection("users").find().forEach(function(aUser) {
-            if (tweetUser === aUser.name) {
-              database.collection("tweets").update(aTweet, { userId: aUser._id, content: aTweet.content.text, created_at: aTweet.created_at });
+            // let user_Id = randomize("Aa0", 10);
+            if (tweetUser === JSON.stringify(aUser._id)) {
+              console.log("here");
+              database.collection("tweets").update(aTweet, {$set : {userId: aUser.userId}});
+              // database.collection("tweets").update(aTweet, { userId: aUser._id, content: aTweet.content.text, created_at: aTweet.created_at });
             }
+            // database.collection("users").update(aUser, {$set : {userId: user_Id}});
+
           });
 
         })

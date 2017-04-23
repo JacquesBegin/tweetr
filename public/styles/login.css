@@ -1,0 +1,69 @@
+.login-h1 {
+  margin: .25em 0 .5em .5em;
+  font-size: 3em;
+  float: left;
+}
+
+.login-logo {
+  width: 5em;
+  height: 5em;
+  float: left;
+}
+
+form {
+  clear: left;
+  background-color: #00a087;
+  padding: 2em;
+
+}
+
+label {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+#email {
+  margin: 0 0 1em 0;
+  width: 100%;
+  -moz-box-shadow:    inset 0 0 1px #000000;
+  -webkit-box-shadow: inset 0 0 1px #000000;
+  box-shadow:         inset 0 0 1px #000000;
+}
+
+#password {
+  margin: 0 0 1em 0;
+  width: 100%;
+  -moz-box-shadow:    inset 0 0 1px #000000;
+  -webkit-box-shadow: inset 0 0 1px #000000;
+  box-shadow:         inset 0 0 1px #000000;
+}
+
+.submit-button {
+  margin: .5em 0 0 0 ;
+  background-color: #e8fdff;
+  color: #00a087;
+  border: 1px solid black;
+  border-radius: .25em;
+  font-size: 1.3em;
+  padding: .55em 1em;
+}
+
+.submit-button i {
+  margin: 0 .25em 0 0;
+}
+
+.submit-button:hover {
+  color: #00a087;
+  background-color: #c1f4ed;
+}
+
+.register-link {
+  text-decoration: none;
+  font-size: 2em;
+  line-height: 1.9em;
+  color: #e8fdff;
+}
+
+.register-link:hover {
+  color: #afdbd5;
+}
