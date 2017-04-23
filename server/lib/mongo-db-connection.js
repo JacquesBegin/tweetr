@@ -3,6 +3,8 @@ const MONGODB_URI = "mongodb://localhost:27017/tweeter";
 
 var db;
 
+// module to connect, get, and close the mongo database
+
 module.exports = {
 
   connectToServer: function(callback) {
