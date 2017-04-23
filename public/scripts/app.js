@@ -46,18 +46,18 @@ $(document).ready(function() {
 
     // the tweet header and content that needs to display in the header
     var $header = $("<header>").addClass("tweet-header");
-    var $headerImg = $("<img>").attr("src", `${tweetData.user.avatars.regular}`);
-    var $headerH2 = $("<h2>").text(`${tweetData.user.name}`);
-    var $headerHandle = $("<span>").addClass("handle-name").text(`${tweetData.user.handle}`);
+    var $headerImg = $("<img>").attr("src", `${tweetData.avatars.regular}`);
+    var $headerH2 = $("<h2>").text(`${tweetData.name}`);
+    var $headerHandle = $("<span>").addClass("handle-name").text(`${tweetData.handle}`);
 
     // the tweet message content
-    var $message = $("<p>").addClass("tweet-message").text(`${tweetData.content.text}`);
+    var $message = $("<p>").addClass("tweet-message").text(`${tweetData.content}`);
 
     // the tweet footer and content that needs to display in the footer
     var $footer = $("<footer>").addClass("tweet-footer");
 
     // get the age of the post to display on the tweet
-    var postAgeMessage = getTimeSincePostCreation(tweetData.created_at);
+    var postAgeMessage = getTimeSincePostCreation(`${tweetData.created_at}`);
 
     // assemble the footer action links for flag, retweet, and heart
     var $footerAge = $("<span>").addClass("tweet-age").text(`${postAgeMessage}`);
