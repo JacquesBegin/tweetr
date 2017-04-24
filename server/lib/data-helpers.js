@@ -17,7 +17,7 @@ module.exports = function makeDataHelpers(db) {
         var database = db.getDb();
         database.collection("tweets").insertOne(newTweet);
         database.collection("users").insertOne(newUser);
-        db.closeDb();
+        // db.closeDb();
       });
         callback(null, true);
     },
@@ -30,7 +30,7 @@ module.exports = function makeDataHelpers(db) {
         }
         var database = db.getDb();
         database.collection("tweets").find().toArray((err, tweets) => {
-          db.closeDb();
+          // db.closeDb();
           callback(null, tweets);
         });
       });
@@ -44,7 +44,7 @@ module.exports = function makeDataHelpers(db) {
         }
         var database = db.getDb();
         database.collection("users").find().toArray((err, users) => {
-          db.closeDb();
+          // db.closeDb();
           callback(null, users);
         });
       });
